@@ -22,39 +22,9 @@ app.get('/api/friends', function(req, res) {
   return res.json(friends);
 });
 
-//render the html file
-app.get('/', function(req, res){
-    //res.render('home.html')
-   res.sendFile(path.join(__dirname+'/public/home.html'));
-});
 
-// render the table that are reserved
-app.get('/survey', function(req, res){
-    res.sendFile(path.join(__dirname+'/public/survey.html'));
-});
-
-
-// app.post('/api/survey', function(req, res) {
-//   console.log(req.parms);
-//   return res.json(newFriend);
-// });
-
-// Displays a single character, or shows "No character found"
-// app.get('/api/characters/:character', function(req, res) {
-//   // Grab the selected parameter
-//   var chosen = req.params.character;
-//   console.log(chosen);
-
-//   // Filter to show only the selected character
-//   for (var i = 0; i < characters.length; i++) {
-//     if (chosen === characters[i].routeName) {
-//       return res.json(characters[i]);
-//     }
-//   }
-
-//   // Otherwise display "No character found"
-//   return res.send('No character found');
-// });
+require(path.join(__dirname, './routing/apiRoutes'))(app);
+require(path.join(__dirname, './routing/htmlRoutes'))(app);  
 
 // Listener
 // ===========================================================
