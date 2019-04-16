@@ -1,18 +1,21 @@
 
 
-var path = require('path');
+// DEPENDENCIES
+var path = require("path");
 
-// // Export HTML routes
+// ROUTING
+
 module.exports = function(app) {
-	// console.log('___ENTER htmlRoutes.js___');
 
-	// Home page
-	app.get('/', function(req, res) {
-		res.sendFile(path.join(__dirname, '../public/home.html'));
-	});
+  // HTML GET Requests
 
-	// Survey page
-	app.get('/survey', function(req, res) {
-		res.sendFile(path.join(__dirname, '../public/survey.html'));
-	});
+  app.get("/survey", function(req, res) {
+    res.sendFile(path.join(__dirname, "/../public/survey.html"));
+  });
+
+  // If no matching route is found default to home
+  app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "/../public/home.html"));
+  });
+
 };
